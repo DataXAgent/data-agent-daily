@@ -1,3 +1,54 @@
-title: Data Agent Daily
-description: 每日 Data Agent 热点、新闻与官方动态汇总 — 概括 + 原文链接
-theme: jekyll-theme-cayman
+# Site
+url: "https://dataxagent.github.io"
+name: "Data Agent Daily"
+title: "Data Agent Daily"
+description: "每日为您精选 Data Agent 领域的公司动态、行业热点与深度观点：新闻网站、社交媒体与各家官方博客汇总，概括 + 原文链接。"
+logo: 'assets/images/logo.svg'
+favicon: 'assets/images/logo.svg'
+baseurl: /data-agent-daily
+include: ["_pages"]
+permalink: /:year/:month/:title/
+
+# Authors
+authors:
+  dad:
+    name: Data Agent Daily
+    display_name: Data Agent Daily
+    email: ""
+    web: https://dataxagent.github.io/data-agent-daily/
+    description: "每日 Data Agent 热点简报"
+
+# Plugins
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-archives
+
+# Archives
+jekyll-archives:
+  enabled:
+    - categories
+  layout: archive
+  permalinks:
+    category: '/category/:name/'
+
+# Pagination
+paginate: 6
+paginate_path: /page:num/
+
+# Other
+markdown: kramdown
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: true
+
+adsense: "disabled"
+lazyimages: "disabled"
+
+exclude: [changelog.md, LICENSE.txt, README.md, Gemfile, Gemfile.lock]
