@@ -7,3 +7,5 @@
 - 每期一篇 Markdown：`YYYY-MM-DD.md`，并在 `index.md` 归档里加一行
 - 内容来源：新闻网站、社交媒体（X / Instagram / Facebook / LinkedIn / Reddit 等）、公司官方网站与博客
 - 每期结构：概括 + 原文链接，并标注来源日期与可信度提示
+
+主题：Mediumish（参考 aideepgeek/ai-daily），每篇文章在 front matter 用 image 字段配封面（仓库内 SVG）。
