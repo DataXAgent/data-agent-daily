@@ -1,8 +1,3 @@
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
 # Sample workflow for building and deploying a Jekyll site to GitHub Pages
 name: Deploy Jekyll site to Pages
 
@@ -29,25 +24,27 @@ concurrency:
 jobs:
   # Build job
   build:
-    runs-on: ubuntu-latest
+    # Pinned: ubuntu-latest now resolves to ubuntu-26.04, which has no
+    # prebuilt Ruby for setup-ruby and gets misdetected as self-hosted.
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Setup Ruby
-        # https://github.com/ruby/setup-ruby/releases/tag/v1.207.0
-        uses: ruby/setup-ruby@4a9ddd6f338a97768b8006bf671dfbad383215f4
+        uses: ruby/setup-ruby@v1
         env:
           BUNDLE_FROZEN: "false" # 关键：在这里注入变量，使 setup-ruby 内部的 bundle 运行在非冻结模式
         with:
-          ruby-version: '3.1' # Not needed with a .ruby-version file
+          # Ruby version comes from the repo's .ruby-version file (3.4.2).
+          # Do NOT pin 3.1 here: it has no prebuilt binaries on current images.
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-          cache-version: 0 # Increment this number if you need to re-download cached gems
+          cache-version: 1 # Increment this number if you need to re-download cached gems
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
       - name: Build with Jekyll
         # Outputs to the './_site' directory by default
-        run: 
+        run:
           bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: production
@@ -60,7 +57,7 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: build
     steps:
       - name: Deploy to GitHub Pages
