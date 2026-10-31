@@ -4,13 +4,20 @@ title: "Data Agent Daily — 2026-10-31"
 author: dad
 date: 2026-10-31
 image: "assets/images/covers/2026-10-31.svg"
-description: "今日一句话判断：agent 的竞争正在从“会答问题”转向“谁拥有可信、可计价、可治理的上下文”——Hex 为此重写了整个产品，ZoomInfo 把 GTM 上下文接进 Snowflake agent，Dataline 则想给 agent 的每一次数据调用标价。"
+description: "今日速览：Hex 发布 4.0 并完成 1 亿美元 D 轮（估值 12 亿美元）；ZoomInfo 的 MCP 与 API 上线 Snowflake；Dataline 宣布 1,060 万美元融资；Signal65 实测 Snowflake CoCo agent 比人工快 4.6 倍；Snowflake 与 Databricks 两位 CEO 在 X 公开互怼。"
 categories: ["Data Agent Daily"]
 tags: ["data-agent", "news"]
 comments: false
 ---
 
-> 今日一句话判断：agent 的竞争正在从“会答问题”转向“谁拥有可信、可计价、可治理的上下文”——Hex 为此重写了整个产品，ZoomInfo 把 GTM 上下文接进 Snowflake agent，Dataline 则想给 agent 的每一次数据调用标价。
+## 今日速览
+
+- Hex 发布从头重写的 Hex 4.0，并完成 1 亿美元 D 轮融资、估值 12 亿美元，4.0 目前为 private beta。
+- ZoomInfo 的 MCP 连接器与 API 上线 Snowflake AI Data Cloud，可经管理员批准暴露给 Cortex Agents。
+- dbt Labs 博客复盘 LangChain 的分层上下文体系：自助分析提问量增长 40 倍。
+- Dataline 宣布 1,060 万美元融资，做 agent 按调用付费的数据网络（x402）。
+- Signal65 实测：Snowflake CoCo agent 68 分钟跑完七阶段工作流，人工需 316 分钟。
+- Snowflake 与 Databricks 两位 CEO 在 X 上就收入增速与 AI token 成本公开互怼。
 
 ## 公司发布 / 官方博客
 
@@ -21,7 +28,7 @@ Hex 宣布从头重写的数据分析平台 Hex 4.0，同时完成 1 亿美元 D
 - [CryptoBriefing 报道](https://cryptobriefing.com/hex-100-million-series-d-ai-agents/)
 
 ### 2. ZoomInfo MCP 与 API 上线 Snowflake（10/30）
-ZoomInfo 宣布其 MCP 连接器与 API 已进入 Snowflake AI Data Cloud，均经由 GTM.AI（其 headless GTM 上下文层）接入。业务用户可在 Snowflake CoWork 里用自然语言查询 ZoomInfo 数据，经管理员批准后可暴露给 Snowflake Cortex Agents；数据团队则可用 Search、Enrich、Lookup、Bulk、Monitoring 五组端点实时或批量 enrich  Snowflake 表（批量上限为每请求 10,000 条、每查询 200,000 条）。ZoomInfo 称其 GTM Context Graph 覆盖 1 亿+公司、5 亿+联系人及数十亿购买信号；每次调用走 OAuth 2.0 并继承用户在 ZoomInfo 内的角色权限，全部用量记入审计框架——10 月 30 日各家通稿的共同主题正是“agent 能读什么数据、凭什么权限读”。
+ZoomInfo 宣布其 MCP 连接器与 API 已进入 Snowflake AI Data Cloud，均经由 GTM.AI（其 headless GTM 上下文层）接入。业务用户可在 Snowflake CoWork 里用自然语言查询 ZoomInfo 数据，经管理员批准后可暴露给 Snowflake Cortex Agents；数据团队则可用 Search、Enrich、Lookup、Bulk、Monitoring 五组端点实时或批量 enrich  Snowflake 表（批量上限为每请求 10,000 条、每查询 200,000 条）。ZoomInfo 称其 GTM Context Graph 覆盖 1 亿+公司、5 亿+联系人及数十亿购买信号；每次调用走 OAuth 2.0 并继承用户在 ZoomInfo 内的角色权限，全部用量记入审计框架。
 - [ZoomInfo 官方发布稿](https://www.zoominfo.com/newsroom/press-releases/zoominfo-mcp-api-launch-snowflake)
 - [Business Wire 原稿](https://www.businesswire.com/news/home/20261030229214/en/ZoomInfo-launches-New-MCP-Connector-and-API-on-Snowflake)
 
@@ -50,7 +57,6 @@ Snowflake CEO Sridhar Ramaswamy 在 X 上转发 Ben Horowitz 谈 Databricks 的�
 
 说明：今日检索未见 Google Cloud、Microsoft、Databricks 官方博客在过去 24 小时内发布新的 Data Agent 专帖，其最新动态已见本刊首期；X / Instagram / LinkedIn / Reddit 今日除上述 CEO 交锋外，未见可核实的新热帖。
 
-## 可直接做内容的选题
-- “Agent-native 不是加法，是重写”：用 Hex 4.0 的案例讲为什么在旧产品上贴 agent 贴不住——工具膨胀、MCP 单通道、计算引擎三处旧账，适合做一张“旧架构 vs agent-native 架构”对比图
-- “你的 agent 凭什么权限读数据”：以 ZoomInfo × Snowflake 为例，讲 OAuth + 角色权限 + 审计这条线为什么是 10 月 30 日通稿的共同主题，钩子：agent 时代的权限模型就是新的数据治理
-- “数据开始按调用卖给 agent”：Dataline 的 x402 + 置信度评分，讲数据产品计价方式的变化——从卖订阅到卖每次调用的可信度，适合接 RecSys 视角：推荐系统早就按 impression 计价，数据层正在跟上
+## 今日回顾
+
+Hex 发布 4.0 并完成 1 亿美元 D 轮（估值 12 亿美元）；ZoomInfo 的 MCP 与 API 接入 Snowflake；dbt Labs 博客公开 LangChain 分层上下文做法，自助分析提问量增长 40 倍；Dataline 宣布 1,060 万美元融资；Signal65 实测 Snowflake CoCo agent 比人工快 4.6 倍；Snowflake 与 Databricks 两位 CEO 在 X 公开互怼。
