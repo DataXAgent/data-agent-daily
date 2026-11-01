@@ -17,6 +17,9 @@ comments: false
 - SAP 在 TechEd 推出 Joule Studio 与 Joule Work 的分阶段 GA，以及分层的 agent 网关能力。
 - Sema4.ai 发布企业 AI Agent 平台 3.0，新增团队共享工作区与可复用的 Verified Queries、Verified Logic，公司称 Verified Queries 可少用 80% 的 LLM token、快 4 倍。
 - Articul8 发布多模态决策模型 Bivia，通过 API 供企业 agent 调用，覆盖 Choice、Boolean、Score、Set、Span 五种决策原语。
+- Zoho 把 Zoho Analytics 改为 Agentic Analytics 平台，Ask Zia 成为协调六个专业子 agent 的超级 agent，并内置本体与语义层，定价不变。
+- Snowflake 在 10 月 28 日的文档中给 Cortex Agents 的 Coding Agent 增加三项公开控制：推理强度、附加系统指令与 stage 挂载。
+- Context Labs 在 11 月 1 日发布 AI Distillery，把企业运营与业务数据转为带可验证 lineage 的、归企业所有的 Context Package，现已在 Microsoft Marketplace 上架。
 - a16z 文章披露 Databricks 平台上 agent 发起的查询已超过人类，agent 每天启动数据库超过 1,700 万个；Databricks 首席执行官与 Snowflake 首席执行官随后在 X 上就相关数字公开交锋。
 - 社区实战：Medium 连载用 Snowflake 托管 MCP 服务器 + Cortex Agent 复现咖啡连锁门店收入下滑 36% 的归因，脚本已在真实账号上跑通。
 - 论文 / 推荐代理：Meta AI 与加州大学圣迭戈分校的 PAMO 方法（arXiv 2610.07588，10 月 6 日首投，10 月 31 日经 X 与媒体报道进入公众视野）称，4B 个人代理用跨平台历史重排 Steam 候选后，top-10 命中率从 40.8% 升至 47.9%。
@@ -48,29 +51,43 @@ Articul8 在 10 月 28 日发布多模态决策模型 Bivia，通过 API 提供�
 - [GlobeNewswire 通稿](https://www.globenewswire.com/news-release/2026/10/28/3390832/0/en/articul8-launches-bivia-to-bring-domain-specific-decision-intelligence-to-enterprise-ai-agents.html)
 - [TechGig 报道](https://techgig.com/news/ai/articul8-launches-bivia-for-enterprise-ai-agent-decision-intelligence/135291818)
 
+### 6. Zoho 把 Zoho Analytics 改为 Agentic Analytics 平台：Ask Zia 协调六个子 agent，本体与语义层内置（10/28）
+Zoho 在 10 月 28 日宣布把 Zoho Analytics 从自助 BI 平台改为 Agentic Analytics 平台。Ask Zia 现为超级 agent，协调六个专业子 agent：数据分析、数据可视化、数据准备、公式、DSML 编码与 SQL，六个 agent 共用同一语义层、本体与对话上下文；数据分析 agent 给出描述性、诊断性与规范性三类洞察，公式 agent 把口径写成可复用指标，DSML 编码 agent 在 Code Studio 里训练与运行分类、回归、预测等模型。平台内置两层上下文：本体层映射客户、订单、产品、供应商等业务实体及其关系，语义层为每个指标与字段写描述、同义词与使用说明，另有 Scoping 把 agent 的取数范围限定在指定数据与看板内。外部接入方面，Zoho Analytics MCP 服务器提供本地与远程两种部署，另有 Claude 连接器与插件、命令行界面与可嵌入自有应用的 agent；团队也可自建自定义 agent，接入 MCP 服务器与网络搜索，并设指令与护栏。治理方面包括数据目录、沙箱与部署管理、表列行三级数据策略与 AI 可观测性（记录哪些 agent 运行、谁使用、访问了什么、如何作答）。新增 30 多个连接器，连接器总数超过 500 个，新增 SAP S/4HANA Cloud、PayPal、Adobe Commerce、Notion、Supabase 等；定价不变，每档计划新增每月 Zoho LLM 额度。云端已上线，本体与语义模型的预览按独立报道在未来 4–8 周内逐步覆盖各区域，本地部署版本排在 2027 年第一季度。
+- [Zoho 官方博客](https://www.zoho.com/blog/analytics/new-zoho-analytics-agentic-analytics.html)
+- [Frontier 分析](https://www.thisisfrontier.ai/news/zoho-turns-analytics-into-an-agent-context-layer-moving-enterprise-ai-control-beyond-the-model)
+
+### 7. Snowflake：Cortex Agents Coding Agent 新增推理强度、附加系统指令与 stage 挂载三项控制（10/28 文档）
+Snowflake 在 10 月 28 日的发布说明中给 Cortex Agents 的 Coding Agent 增加三项公开控制，均作用于包含 code_toolset_all 工具的 agent:run 请求。thinking_effort 设定编排模型的推理强度，可选 minimal、low、medium、high、xhigh、max，各模型只接受其中一部分，超出部分会降到该模型接受的最高档；instructions.system 是附加在受管编码 agent 提示词之上的额外系统指令，不替换沙箱、工具与技能指令；stage_mounts 把 Snowflake stage 或版本化 stage 挂载进沙箱，版本化 stage 包括 notebook、Streamlit 应用、工作区与 agent，workspace_mounts 保持不变，仍挂载可写工作区 live 版本。这三项是编码 agent 的生产控制项，不是新产品发布。
+- [Snowflake 官方文档（10/28）](https://docs.snowflake.com/en/release-notes/2026/other/2026-10-28-cortex-agents-coding-agent-thinking-effort-stage-mounts)
+
+### 8. Context Labs 在 11 月 1 日发布 AI Distillery：企业数据转为归企业所有的 Context Package（11/01）
+Context Labs 在 11 月 1 日（阿布扎比，PR Newswire 通稿）发布 AI Distillery，定位为面向可信主权 AI 的 Context Engine：把企业的运营与业务数据转为受治理的 Context Package，归企业所有，并附可验证的 lineage。平台把结构化与非结构化数据映射到行业本体，Context Package 中的每个答案可追溯回源记录，平台在模型进入生产前先用企业自身记录校验答案；客户可自选前沿模型或开源权重模型，运行在自有数据中心或自选云上。产品现已通过 Microsoft Marketplace 上架，每个企业许可附带一个行业 starter kit；公司正在 ADIPEC 2026 上用能源场景演示，Context Agent 回答运营问题时每个数字追溯到工厂记录。通稿未披露定价与已签约客户，准确率与处理吞吐量也未公布基准数字。
+- [PR Newswire 通稿（11/01）](https://www.prnewswire.co.uk/news-releases/context-labs-ai-distillery-lets-enterprises-run-sovereign-ai-on-data-they-own-302925657.html)
+- [Wisevoter 报道（11/01）](https://wisevoter.com/world/2026/11/01/context-labs-launches-ai-distillery)
+
 ## 新闻网站
 
-### 6. a16z 文章披露 Databricks 平台数据：agent 查询量已超人类，每天启动数据库超 1,700 万个；两家 CEO 随后在 X 上交锋（10/27 文章，10/29 交锋）
+### 9. a16z 文章披露 Databricks 平台数据：agent 查询量已超人类，每天启动数据库超 1,700 万个；两家 CEO 随后在 X 上交锋（10/27 文章，10/29 交锋）
 a16z 在 10 月 27 日发表《Databricks & the Future of the Firm》，首次披露了 Databricks 平台的 agent 用量数字：agent 发起的查询已超过人类，agent 每天启动数据库超过 1,700 万个，而三年前平台上的全部交互都来自人类。文章称 agent 活动 feeding 的产品线是 Lakebase（随 2025 年 5 月约 10 亿美元收购 Neon 而来），其年化收入已过 1 亿美元，约占 Databricks 70 亿美元总年化收入的 1.4%；Lakehouse 仓储线年化收入已过 15 亿美元、年增速超 100%。另据文章引用的 Databricks 自述，基于企业本体做 grounding 后，回答准确率在其自有测试中从约 50% 提升到 84.5%。提醒：a16z 是 Databricks 的早期投资方（领投了 2013 年 A 轮）且作者 Ben Horowitz 担任 Databricks 董事，数字为利益相关方披露，未经审计；Databricks 8 月融资时估值为 1,900 亿美元，年化收入 70 亿美元。10 月 29 日，Snowflake 首席执行官 Sridhar Ramaswamy 在 X 上引用该文要求 Databricks“公布全部数字”，并质疑剔除透传推理收入后 80% 的年增速是否会降至 65%；Databricks 首席执行官 Ali Ghodsi 回应称两家公司互补，并称使用 Unity Gateway 的客户近几个月 token 支出减少约 30%，同时 token 总量上升。
 - [The Inference 报道](https://theinference.org/article/agents-launch-17-million-databases-a-day-on-databricks-the-line-they-feed-makes-100-million)
 - [Analytics India Magazine：两家 CEO 的 X 交锋（10/29）](https://analyticsindiamag.com/ai-news/youre-not-doing-this-ai-stuff-databricks-ceo-tells-snowflake)
 
 ## 社交媒体
 
-### 7. Medium 连载：用 Snowflake 托管 MCP 服务器 + Cortex Agent 做门店归因，脚本真实跑通（10/31–11/1）
+### 10. Medium 连载：用 Snowflake 托管 MCP 服务器 + Cortex Agent 做门店归因，脚本真实跑通（10/31–11/1）
 Pranav Katyayen 在 Medium 上线的 Snowflake AI 实战连载首集，用一个 SQL 脚本搭起 Snowflake 托管 MCP 服务器，让 Claude 与 Cursor 经 Cortex Agent 查询受治理的数据并做归因：案例是 Snowbrew Coffee 涩谷门店 9 月收入下滑 36%，agent 先从销售数据取数，再读日文客户投诉找原因。作者称全部脚本已在真实 Snowflake 账号上多次端到端跑通，并如实记录了踩坑点：新账号会屏蔽旧版 Cortex 函数、OAuth 拒绝 ACCOUNTADMIN、新建 Streamlit 应用默认的运行时与文档不一致。连载定位是“每个实验都真实跑通”，下一集计划让 agent 在 Snowflake 内写代码、跑代码并部署应用，且每次改动前都会征求许可。
 - [Medium 首集](https://medium.com/@katyayen.pranav/i-asked-claude-why-our-coffee-sales-crashed-it-answered-from-snowflake-with-zero-backend-code-d5ab12b753ea)
 - [Medium 连载总览](https://medium.com/@katyayen.pranav/snowflake-ai-hands-on-a-series-where-every-lab-actually-runs-2998ded73055)
 
 ## 论文 / arXiv
 
-### 8. 推荐代理：Meta AI 与 UC San Diego 的 PAMO，4B 个人代理用跨平台历史重排推荐（论文 10/6 首投，10/31 进入公众讨论）
+### 11. 推荐代理：Meta AI 与 UC San Diego 的 PAMO，4B 个人代理用跨平台历史重排推荐（论文 10/6 首投，10/31 进入公众讨论）
 Meta AI 与加州大学圣迭戈分校的研究者提出的个人代理中介推荐方法 PAMO，在 10 月 31 日经 X 帖子与 FourWeekMBA 报道进入公众讨论；论文本身首投于 10 月 6 日（arXiv 2610.07588），标题为《Personal-Agent Mediated Recommendation with Cross-Platform User History》。方法设定是：平台先用自有数据做排序，用户的个人代理再用用户授权的跨平台历史对排序做编辑，PAMO 在训练中遮蔽跨平台历史以判断哪些回答真正依赖它，只在排序质量不下降时给这类回答更高奖励。在真实跨平台 Steam 测试（645 名用户，目标平台为 Steam，跨平台历史来自 Nintendo 与 Xbox）中，基于 Qwen3-4B-Instruct 的 PAMO 代理 top-10 命中率 47.9%，高于平台排序的 40.8% 与 Claude Opus 4.6 的 45.4%；有害覆盖率 6.0%，低于 Claude Opus 4.6 的 9.0%。限制同样写在报道里：测试只覆盖 645 名用户与 Steam 一个目标平台，平台排序为研究者自建而非 Steam 真实推荐器，论文未说明 Meta 有产品在使用该方法；论文为预印本，未经同行评审。
 - [FourWeekMBA 报道（10/31，含论文数据与限制）](https://fourweekmba.com/ai-meta-paper-a-4b-personal-agent-lifted-game-picks-to-47-9/)
 - [arXiv 论文页](https://arxiv.org/abs/2610.07588)
 
-说明：本次扩充检索覆盖了 watchlist 监测名单主体、arXiv 与 Hugging Face Papers 方向及新增关键词。10 月 31 日 DeepSeek Harness 团队发布的 Super-agent 为编码 agent 原型（MIT 许可的 dsh-superagent-prototype），不在 Data Agent 主题的直接收录范围内，故未列入本期头条序列；本次检索范围内未见 10 月 31 日至 11 月 1 日首投的、与 Data Agent 直接相关的新 arXiv 论文，上述 PAMO 一条以 10 月 31 日的公开讨论为收录依据、论文首投日期已如实标注。今日检索未见 Microsoft、Snowflake、dbt Labs、Hex、ThoughtSpot、Wren AI 官方博客在过去 24 小时内发布新的 Data Agent 专帖。
+说明：本期为 11 月 1 日晚间更新重发版，新增第 6、7、8 条（Zoho、Snowflake Cortex Agents 控制、Context Labs），其余条目与首发版一致。本次扩充检索覆盖了 watchlist 监测名单主体、arXiv 与 Hugging Face Papers 方向及新增关键词。10 月 31 日 DeepSeek Harness 团队发布的 Super-agent 为编码 agent 原型（MIT 许可的 dsh-superagent-prototype），不在 Data Agent 主题的直接收录范围内，故未列入本期头条序列；本次检索范围内未见 10 月 31 日至 11 月 1 日首投的、与 Data Agent 直接相关的新 arXiv 论文，上述 PAMO 一条以 10 月 31 日的公开讨论为收录依据、论文首投日期已如实标注。今日检索未见 Microsoft、dbt Labs、Hex、ThoughtSpot、Wren AI 官方博客在过去 24 小时内发布新的 Data Agent 专帖。
 
 ## 今日回顾
 
-Databricks 与 SAP 扩大合作，把 Genie、Lakeflow、Unity Gateway 与 Lakebase 带入 SAP Databricks，并推出 SAP Application Data Foundation；Google 知识目录的扩展语义模型支持进入 GA；SAP 在 TechEd 推出 Joule Studio 与网关能力；Sema4.ai 发布企业 AI Agent 平台 3.0；Articul8 发布企业 agent 决策模型 Bivia；a16z 文章披露 Databricks 平台上 agent 查询量已超过人类，两家 CEO 随后在 X 上交锋；社区实战连载用 Snowflake 托管 MCP 服务器完成门店归因；Meta AI 与 UC San Diego 的 PAMO 推荐代理方法在 10 月 31 日进入公众讨论。
+Databricks 与 SAP 扩大合作，把 Genie、Lakeflow、Unity Gateway 与 Lakebase 带入 SAP Databricks，并推出 SAP Application Data Foundation；Google 知识目录的扩展语义模型支持进入 GA；SAP 在 TechEd 推出 Joule Studio 与网关能力；Sema4.ai 发布企业 AI Agent 平台 3.0；Articul8 发布企业 agent 决策模型 Bivia；Zoho 把 Zoho Analytics 改为 Agentic Analytics 平台，Ask Zia 协调六个子 agent；Snowflake 给 Cortex Agents 的 Coding Agent 增加三项公开控制；Context Labs 在 11 月 1 日发布 AI Distillery；a16z 文章披露 Databricks 平台上 agent 查询量已超过人类，两家 CEO 随后在 X 上交锋；社区实战连载用 Snowflake 托管 MCP 服务器完成门店归因；Meta AI 与 UC San Diego 的 PAMO 推荐代理方法在 10 月 31 日进入公众讨论。
