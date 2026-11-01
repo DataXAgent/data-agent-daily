@@ -4,7 +4,7 @@ title: "Data Agent Daily — 2026-11-01"
 author: dad
 date: 2026-11-01
 image: "assets/images/covers/2026-11-01.svg"
-description: "今日速览：Databricks 与 SAP 扩大合作，把 Genie、Lakeflow、Unity Gateway 与 Lakebase 带入 SAP Databricks，并推出 SAP Application Data Foundation；Google 知识目录的扩展语义模型支持进入 GA；SAP 在 TechEd 推出 Joule Studio 与网关能力；Articul8 发布企业 agent 决策模型 Bivia；a16z 文章披露 Databricks 平台上 agent 查询量已超过人类。"
+description: "Databricks 与 SAP 扩大合作，把 Genie、Lakeflow、Unity Gateway 与 Lakebase 带入 SAP Databricks，并推出 SAP Application Data Foundation。"
 categories: ["Data Agent Daily"]
 tags: ["data-agent", "news"]
 comments: false
@@ -14,10 +14,12 @@ comments: false
 
 - Databricks 与 SAP 扩大合作，把 Genie、Lakeflow、Unity Gateway 与 Lakebase 带入 SAP Business Data Cloud 内的 SAP Databricks，并推出 SAP Application Data Foundation。
 - Google 宣布 Knowledge Catalog 的扩展语义模型支持进入 GA，覆盖 Looker LookML、BigQuery Graph、dbt MetricFlow、Snowflake Semantic Views、Databricks Metric Views 与 SAP CSN。
-- SAP 在 TechEd 推出 Joule Studio 与 Joule Work 的分阶段 GA，以及 agent 网关能力；完整企业级网关的 GA 时间在独立报道中为 2027 年第一季度。
+- SAP 在 TechEd 推出 Joule Studio 与 Joule Work 的分阶段 GA，以及分层的 agent 网关能力。
+- Sema4.ai 发布企业 AI Agent 平台 3.0，新增团队共享工作区与可复用的 Verified Queries、Verified Logic，公司称 Verified Queries 可少用 80% 的 LLM token、快 4 倍。
 - Articul8 发布多模态决策模型 Bivia，通过 API 供企业 agent 调用，覆盖 Choice、Boolean、Score、Set、Span 五种决策原语。
-- a16z 文章披露：Databricks 平台上 agent 发起的查询已超过人类，agent 每天启动数据库超过 1,700 万个，Lakebase 年化收入已过 1 亿美元。
+- a16z 文章披露 Databricks 平台上 agent 发起的查询已超过人类，agent 每天启动数据库超过 1,700 万个；Databricks 首席执行官与 Snowflake 首席执行官随后在 X 上就相关数字公开交锋。
 - 社区实战：Medium 连载用 Snowflake 托管 MCP 服务器 + Cortex Agent 复现咖啡连锁门店收入下滑 36% 的归因，脚本已在真实账号上跑通。
+- 论文 / 推荐代理：Meta AI 与加州大学圣迭戈分校的 PAMO 方法（arXiv 2610.07588，10 月 6 日首投，10 月 31 日经 X 与媒体报道进入公众视野）称，4B 个人代理用跨平台历史重排 Steam 候选后，top-10 命中率从 40.8% 升至 47.9%。
 
 ## 公司发布 / 官方博客
 
@@ -36,26 +38,39 @@ SAP 在 10 月 27 日柏林 TechEd 上推出一揽子企业 AI 能力：Joule Wo
 - [Frontier 分析：SAP agent 扩展与网关时间口径辨析](https://www.thisisfrontier.ai/news/sap-s-agent-expansion-moves-the-cio-choice-from-ai-tools-to-control-architecture)
 - [ERP Today：TechEd 2026 上线与排期梳理](https://erp.today/sap-teched-2026-whats-rolling-out-and-whats-planned-through-2027/)
 
-### 4. Articul8 发布 Bivia：不为每个判断都调用生成式模型的企业 agent 决策层（10/28）
+### 4. Sema4.ai 发布企业 AI Agent 平台 3.0：团队共享工作区 + 可复用已验证查询与逻辑（10/29 宣布，10/31 仍在被报道）
+Sema4.ai 在 10 月 29 日宣布企业 AI Agent 平台 3.0，新增团队共享工作区：团队可在受治理的工作区内共同管理 agent、技能、记忆、数据与文件。版本的核心做法是把重复性 agent 工作从每次都由模型重新生成，改为复用客户已审核批准的代码：Verified Queries 复用已批准的数据访问模式，公司称比重复生成查询少用 80% 的 LLM token、快 4 倍；Verified Logic 复用已批准的计算、校验与转换，公司称对重复任务少用 50% 的 token、快 30%。此外，3.0 加入法务审计报告（记录每个 agent 步骤的操作前后变化）、DataFrames 大结构化数据集内存计算（不把每一行都过模型上下文）、Agent Inbox，以及与 Claude Cowork、Microsoft Copilot 的互通和 Microsoft Fabric 支持。上述提速与省 token 数字均为公司口径，未附独立测试细节。
+- [Sema4.ai 官方新闻稿（10/29）](https://sema4.ai/newsroom/sema4ai-enterprise-ai-agent-platform-team-based-work-token-reduction/)
+- [WebWire 通稿转载（10/29）](http://www.webwire.com/ViewPressRel.asp?aId=363502)
+
+### 5. Articul8 发布 Bivia：不为每个判断都调用生成式模型的企业 agent 决策层（10/28）
 Articul8 在 10 月 28 日发布多模态决策模型 Bivia，通过 API 提供给企业 agent 使用，定位是决策层而非生成层：agent 在执行任务中反复遇到的判断（选工具、核对事实、确认任务完成、校验文档是否符合 schema、图片是否通过检查）可直接由 Bivia 处理，而不必每次都调用生成式模型。Bivia 覆盖文本、图像、视频、表格与图表，支持 Choice、Boolean、Score、Set、Span 五种决策原语与 Fast、Fast+think、Deep 三档运行模式，并可按企业的行业知识、政策与流程定制。公司称 Bivia 建立在其平台内数十亿次决策之上，内部测试中在特定能源与硬件设计（Verilog）任务上达到 100% 准确率——该数字为公司内部测试口径，未经第三方核验，不宜外推到其他行业。Bivia 可独立以 API 形式使用，也可作为 Articul8 企业 AI 平台的一部分，公司点名的已有客户包括 Hitachi Energy、CTC、AZing 与 Megazone。
 - [GlobeNewswire 通稿](https://www.globenewswire.com/news-release/2026/10/28/3390832/0/en/articul8-launches-bivia-to-bring-domain-specific-decision-intelligence-to-enterprise-ai-agents.html)
 - [TechGig 报道](https://techgig.com/news/ai/articul8-launches-bivia-for-enterprise-ai-agent-decision-intelligence/135291818)
 
 ## 新闻网站
 
-### 5. a16z 文章披露 Databricks 平台数据：agent 查询量已超人类，每天启动数据库超 1,700 万个（10/27）
-a16z 在 10 月 27 日发表《Databricks & the Future of the Firm》，首次披露了 Databricks 平台的 agent 用量数字：agent 发起的查询已超过人类，agent 每天启动数据库超过 1,700 万个，而三年前平台上的全部交互都来自人类。文章称 agent 活动 feeding 的产品线是 Lakebase（随 2025 年 5 月约 10 亿美元收购 Neon 而来），其年化收入已过 1 亿美元，约占 Databricks 70 亿美元总年化收入的 1.4%；Lakehouse 仓储线年化收入已过 15 亿美元、年增速超 100%。另据文章引用的 Databricks 自述，基于企业本体做 grounding 后，回答准确率在其自有测试中从约 50% 提升到 84.5%。提醒：a16z 是 Databricks 的早期投资方（领投了 2013 年 A 轮）且作者 Ben Horowitz 担任 Databricks 董事，数字为利益相关方披露，未经审计；Databricks 8 月融资时估值为 1,900 亿美元，年化收入 70 亿美元。
+### 6. a16z 文章披露 Databricks 平台数据：agent 查询量已超人类，每天启动数据库超 1,700 万个；两家 CEO 随后在 X 上交锋（10/27 文章，10/29 交锋）
+a16z 在 10 月 27 日发表《Databricks & the Future of the Firm》，首次披露了 Databricks 平台的 agent 用量数字：agent 发起的查询已超过人类，agent 每天启动数据库超过 1,700 万个，而三年前平台上的全部交互都来自人类。文章称 agent 活动 feeding 的产品线是 Lakebase（随 2025 年 5 月约 10 亿美元收购 Neon 而来），其年化收入已过 1 亿美元，约占 Databricks 70 亿美元总年化收入的 1.4%；Lakehouse 仓储线年化收入已过 15 亿美元、年增速超 100%。另据文章引用的 Databricks 自述，基于企业本体做 grounding 后，回答准确率在其自有测试中从约 50% 提升到 84.5%。提醒：a16z 是 Databricks 的早期投资方（领投了 2013 年 A 轮）且作者 Ben Horowitz 担任 Databricks 董事，数字为利益相关方披露，未经审计；Databricks 8 月融资时估值为 1,900 亿美元，年化收入 70 亿美元。10 月 29 日，Snowflake 首席执行官 Sridhar Ramaswamy 在 X 上引用该文要求 Databricks“公布全部数字”，并质疑剔除透传推理收入后 80% 的年增速是否会降至 65%；Databricks 首席执行官 Ali Ghodsi 回应称两家公司互补，并称使用 Unity Gateway 的客户近几个月 token 支出减少约 30%，同时 token 总量上升。
 - [The Inference 报道](https://theinference.org/article/agents-launch-17-million-databases-a-day-on-databricks-the-line-they-feed-makes-100-million)
+- [Analytics India Magazine：两家 CEO 的 X 交锋（10/29）](https://analyticsindiamag.com/ai-news/youre-not-doing-this-ai-stuff-databricks-ceo-tells-snowflake)
 
 ## 社交媒体
 
-### 6. Medium 连载：用 Snowflake 托管 MCP 服务器 + Cortex Agent 做门店归因，脚本真实跑通（10/31–11/1）
+### 7. Medium 连载：用 Snowflake 托管 MCP 服务器 + Cortex Agent 做门店归因，脚本真实跑通（10/31–11/1）
 Pranav Katyayen 在 Medium 上线的 Snowflake AI 实战连载首集，用一个 SQL 脚本搭起 Snowflake 托管 MCP 服务器，让 Claude 与 Cursor 经 Cortex Agent 查询受治理的数据并做归因：案例是 Snowbrew Coffee 涩谷门店 9 月收入下滑 36%，agent 先从销售数据取数，再读日文客户投诉找原因。作者称全部脚本已在真实 Snowflake 账号上多次端到端跑通，并如实记录了踩坑点：新账号会屏蔽旧版 Cortex 函数、OAuth 拒绝 ACCOUNTADMIN、新建 Streamlit 应用默认的运行时与文档不一致。连载定位是“每个实验都真实跑通”，下一集计划让 agent 在 Snowflake 内写代码、跑代码并部署应用，且每次改动前都会征求许可。
 - [Medium 首集](https://medium.com/@katyayen.pranav/i-asked-claude-why-our-coffee-sales-crashed-it-answered-from-snowflake-with-zero-backend-code-d5ab12b753ea)
 - [Medium 连载总览](https://medium.com/@katyayen.pranav/snowflake-ai-hands-on-a-series-where-every-lab-actually-runs-2998ded73055)
 
-说明：今日检索未见 Microsoft、Snowflake、dbt Labs 官方博客在过去 24 小时内发布新的 Data Agent 专帖；X / Instagram / LinkedIn / Reddit 今日除上述内容外，未见可核实的新热帖。Databricks 10 月 31 日博客《Lakebase branching for CI/CD》为工程实践帖，未列入本期头条序列。
+## 论文 / arXiv
+
+### 8. 推荐代理：Meta AI 与 UC San Diego 的 PAMO，4B 个人代理用跨平台历史重排推荐（论文 10/6 首投，10/31 进入公众讨论）
+Meta AI 与加州大学圣迭戈分校的研究者提出的个人代理中介推荐方法 PAMO，在 10 月 31 日经 X 帖子与 FourWeekMBA 报道进入公众讨论；论文本身首投于 10 月 6 日（arXiv 2610.07588），标题为《Personal-Agent Mediated Recommendation with Cross-Platform User History》。方法设定是：平台先用自有数据做排序，用户的个人代理再用用户授权的跨平台历史对排序做编辑，PAMO 在训练中遮蔽跨平台历史以判断哪些回答真正依赖它，只在排序质量不下降时给这类回答更高奖励。在真实跨平台 Steam 测试（645 名用户，目标平台为 Steam，跨平台历史来自 Nintendo 与 Xbox）中，基于 Qwen3-4B-Instruct 的 PAMO 代理 top-10 命中率 47.9%，高于平台排序的 40.8% 与 Claude Opus 4.6 的 45.4%；有害覆盖率 6.0%，低于 Claude Opus 4.6 的 9.0%。限制同样写在报道里：测试只覆盖 645 名用户与 Steam 一个目标平台，平台排序为研究者自建而非 Steam 真实推荐器，论文未说明 Meta 有产品在使用该方法；论文为预印本，未经同行评审。
+- [FourWeekMBA 报道（10/31，含论文数据与限制）](https://fourweekmba.com/ai-meta-paper-a-4b-personal-agent-lifted-game-picks-to-47-9/)
+- [arXiv 论文页](https://arxiv.org/abs/2610.07588)
+
+说明：本次扩充检索覆盖了 watchlist 监测名单主体、arXiv 与 Hugging Face Papers 方向及新增关键词。10 月 31 日 DeepSeek Harness 团队发布的 Super-agent 为编码 agent 原型（MIT 许可的 dsh-superagent-prototype），不在 Data Agent 主题的直接收录范围内，故未列入本期头条序列；本次检索范围内未见 10 月 31 日至 11 月 1 日首投的、与 Data Agent 直接相关的新 arXiv 论文，上述 PAMO 一条以 10 月 31 日的公开讨论为收录依据、论文首投日期已如实标注。今日检索未见 Microsoft、Snowflake、dbt Labs、Hex、ThoughtSpot、Wren AI 官方博客在过去 24 小时内发布新的 Data Agent 专帖。
 
 ## 今日回顾
 
-Databricks 与 SAP 扩大合作，把 Genie、Lakeflow、Unity Gateway 与 Lakebase 带入 SAP Databricks，并推出 SAP Application Data Foundation；Google 知识目录的扩展语义模型支持进入 GA；SAP 在 TechEd 推出 Joule Studio 与网关能力；Articul8 发布企业 agent 决策模型 Bivia；a16z 文章披露 Databricks 平台上 agent 查询量已超过人类；社区实战连载用 Snowflake 托管 MCP 服务器完成门店归因。
+Databricks 与 SAP 扩大合作，把 Genie、Lakeflow、Unity Gateway 与 Lakebase 带入 SAP Databricks，并推出 SAP Application Data Foundation；Google 知识目录的扩展语义模型支持进入 GA；SAP 在 TechEd 推出 Joule Studio 与网关能力；Sema4.ai 发布企业 AI Agent 平台 3.0；Articul8 发布企业 agent 决策模型 Bivia；a16z 文章披露 Databricks 平台上 agent 查询量已超过人类，两家 CEO 随后在 X 上交锋；社区实战连载用 Snowflake 托管 MCP 服务器完成门店归因；Meta AI 与 UC San Diego 的 PAMO 推荐代理方法在 10 月 31 日进入公众讨论。
