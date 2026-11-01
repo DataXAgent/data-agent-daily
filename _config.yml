@@ -7,7 +7,7 @@ logo: 'assets/images/logo.svg'
 favicon: 'assets/images/logo.svg'
 baseurl: /data-agent-daily
 include: ["_pages"]
-permalink: /:year/:month/:title/
+permalink: /:year/:month/:day/:title/
 
 # Authors
 authors:
