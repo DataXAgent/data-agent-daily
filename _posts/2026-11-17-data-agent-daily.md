@@ -4,7 +4,7 @@ title: "Data Agent Daily — 2026-11-17"
 author: dad
 date: 2026-11-17
 image: "assets/images/covers/2026-11-17.svg"
-description: "Tableau Studio 云版 11 月 17 日按计划上线，服务器版 11 月 19 日跟进；港科大 DIAL 发布数据智能体基准 DataTrace，7 个专有模型平均根因准确率 48%。"
+description: "港科大 DIAL 团队发布 DataTrace：面向数据库智能体的证据锚定根因定位基准，83 个可运行环境、62 个领域、7 类故障，7 个专有模型平均根因准确率 48%，无依据的正确诊断平均占 18%；Tableau Studio 云版 11 月 17 日按计划上线，服务器版 11 月 19 日跟进。"
 categories: ["Data Agent Daily"]
 tags: ["data-agent", "news"]
 comments: false
@@ -12,9 +12,9 @@ comments: false
 
 ## 今日速览
 
+- 港科大 DIAL 团队发布 DataTrace：面向数据库智能体的证据锚定根因定位基准，83 个可运行环境，7 个专有模型平均根因准确率 48%，无依据的正确诊断平均占 18%。
 - Tableau Studio 云版 11 月 17 日按计划上线，服务器版 11 月 19 日跟进，Tableau Agent 与 50 多个 Skills 随云版提供。
 - MMNTM 复核数据分析智能体基准：Spider 2.0-Snow 榜首为 Genloop Sentinel Agent v2 Pro（96.70），BIRD 测试集榜首为 AT&T AskData（83.40），同一智能体方法在私有仓库 BEAVER 上仅 11.4%。
-- 港科大 DIAL 团队发布 DataTrace：面向数据库智能体的证据锚定根因定位基准，83 个可运行环境，7 个专有模型平均根因准确率 48%，无依据的正确诊断平均占 18%。
 - arXiv 11 月 17 日上线 Living Context Graphs：为企业数据持续学习语义上下文，BIRD 保留测试集准确率提升 22.6 个百分点。
 - arXiv 11 月 17 日上线 ElbowHop：text-to-SQL 的自适应 schema 检索，在匹配召回率下精度约为固定预算的两倍。
 - arXiv 11 月 17 日上线 DecoVal：面向 SQL 验证的查询分解优化，用户研究中错误检出率从 36% 升至 91%。
@@ -93,4 +93,4 @@ Threads 账号 @dicacross 在 11 月 16 日发布 Tableau Studio 三图轮播，
 
 ## 今日回顾
 
-Tableau Studio 云版 11 月 17 日按计划上线，服务器版 11 月 19 日跟进；MMNTM 复核数据分析智能体基准，榜首均为智能体系统，同一方法在私有仓库 BEAVER 上仅 11.4%；港科大 DIAL 发布 DataTrace 数据智能体基准，7 个专有模型平均根因准确率 48%，无依据的正确诊断平均占 18%；arXiv 同日上线 Living Context Graphs、ElbowHop、DecoVal、HyperDBDiag、MAPS、BRAVE、StaleBench 与生成式推荐多选题辅助任务 9 篇论文；Cube Core 发布 1.8.27 补丁版。
+港科大 DIAL 发布 DataTrace 数据智能体基准，7 个专有模型平均根因准确率 48%，无依据的正确诊断平均占 18%；Tableau Studio 云版 11 月 17 日按计划上线，服务器版 11 月 19 日跟进；MMNTM 复核数据分析智能体基准，榜首均为智能体系统，同一方法在私有仓库 BEAVER 上仅 11.4%；arXiv 同日上线 Living Context Graphs、ElbowHop、DecoVal、HyperDBDiag、MAPS、BRAVE、StaleBench 与生成式推荐多选题辅助任务 9 篇论文；Cube Core 发布 1.8.27 补丁版。
